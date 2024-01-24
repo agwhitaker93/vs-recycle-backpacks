@@ -22,8 +22,8 @@ jobs:
             echo "Workflow running against a tag: '${{ github.ref }}'"
             echo "::set-output name=tag::${{ github.ref }}
           else
-            echo "Workflow not running against a tag: '${{github.ref}}', attempting to use input tag: '${{ input.tag }}'"
-            echo "::set-output name=tag::${{ input.tag }}"
+            echo "Workflow not running against a tag: '${{github.ref}}', attempting to use input tag: '${{ inputs.tag }}'"
+            echo "::set-output name=tag::${{ inputs.tag }}"
           fi
       - name: Checkout repository
         uses: actions/checkout@v4
