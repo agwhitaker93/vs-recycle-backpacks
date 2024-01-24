@@ -17,11 +17,11 @@ jobs:
         id: vars
         run: |
           modinfo=`cat ./modinfo.json`
-          echo "::set-output name=version::${{ fromJson($modinfo).version }}"
+          echo "::set-output name=modinfo::$modinfo }}"
       - name: Bundle as zip
         run: zip -r recyclebackpacks.zip modinfo.json assets
       - name: Make release
         uses: softprops/action-gh-release@v1
         with:
-          name: steps.vars.outputs.version
+          name: ${{ fromJson(steps.vars.outputs.modinfo).version }}
           files: recyclebackpacks.zip
