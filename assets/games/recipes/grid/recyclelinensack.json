@@ -1,2 +1,46 @@
-// give linen
-// give thread
+[
+    {
+        "ingredientPattern": "K,S",
+        "width": 1,
+        "height": 2,
+        "ingredients": {
+            "K": {
+                "type": "item",
+                "code": "game:knife-*",
+                "isTool": true,
+                "toolDuarbilityCost": 10
+            },
+            "S": {
+                "type": "item",
+                "code": "game:linensack"
+            }
+        },
+        "output": {
+            "type": "block",
+            "code": "game:linen-normal-down",
+            "quantity": 1
+        }
+    },
+    {
+        "ingredientPattern": "S,K",
+        "width": 1,
+        "height": 2,
+        "ingredients": {
+            "K": {
+                "type": "item",
+                "code": "game:knife-*",
+                "isTool": true,
+                "toolDuarbilityCost": 10
+            },
+            "S": {
+                "type": "item",
+                "code": "game:linensack"
+            }
+        },
+        "output": {
+            "type": "item",
+            "code": "game:flaxtwine",
+            "quantity": 1
+        }
+    }
+]
