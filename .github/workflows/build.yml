@@ -16,7 +16,11 @@ jobs:
       - name: Set variables for the run
         id: vars
         run: |
+          # https://stackoverflow.com/a/61919791
           modinfo=`cat ./modinfo.json`
+          modinfo="${modinfo//'%'/'%25'}"
+          modinfo="${modinfo//$'\n'/'%0A'}"
+          modinfo="${modinfo//$'\r'/'%0D'}"
           echo "::set-output name=modinfo::$modinfo }}"
       - name: Bundle as zip
         run: zip -r recyclebackpacks.zip modinfo.json assets
