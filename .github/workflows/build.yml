@@ -28,7 +28,7 @@ jobs:
             echo "Tag already exists"
             exit 1
           fi
-          git tag "v${{ fromJson(steps.vars.outputs.modinfo).version }}
+          git tag "v${{ fromJson(steps.vars.outputs.modinfo).version }}"
           git push --no-verify --tags
           echo "Update the version number of the modinfo here"
           git commit -am "Bump version [skip ci]"
