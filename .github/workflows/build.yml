@@ -38,3 +38,5 @@ jobs:
           git config --global user.email "<>"
           git commit -am "Bump version [skip ci]"
           git push --no-verify
+  release:
+    uses: .github/workflows/release.yml@v${{ fromJson(steps.vars.outputs.modinfo).version }}

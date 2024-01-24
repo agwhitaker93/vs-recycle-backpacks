@@ -1,19 +1,22 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - '*'
+  workflow_call:
   workflow_dispatch:
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Checkout tag
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          echo "It looks like the release isn't running against a tag."
+          exit 1
       - name: Bundle as zip
         run: zip -r recyclebackpacks.zip modinfo.json assets
       - name: Make release
