@@ -1,0 +1,46 @@
+[
+    {
+        "ingredientPattern": "K,S",
+        "width": 1,
+        "height": 2,
+        "ingredients": {
+            "K": {
+                "type": "item",
+                "code": "game:knife-*",
+                "isTool": true,
+                "toolDuarbilityCost": 10
+            },
+            "S": {
+                "type": "item",
+                "code": "game:hunterbackpack"
+            }
+        },
+        "output": {
+            "type": "item",
+            "code": "game:hide-pelt-medium",
+            "quantity": 1
+        }
+    },
+    {
+        "ingredientPattern": "S,K",
+        "width": 1,
+        "height": 2,
+        "ingredients": {
+            "K": {
+                "type": "item",
+                "code": "game:knife-*",
+                "isTool": true,
+                "toolDuarbilityCost": 10
+            },
+            "S": {
+                "type": "item",
+                "code": "game:hunterbackpack"
+            }
+        },
+        "output": {
+            "type": "item",
+            "code": "game:cattailtops",
+            "quantity": 8
+        }
+    }
+]
