@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    outputs:
+      tag: "v${{ fromJson(steps.vars.outputs.modinfo).version }}"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -21,13 +23,15 @@ jobs:
           modinfo="${modinfo//'%'/'%25'}"
           modinfo="${modinfo//$'\n'/'%0A'}"
           modinfo="${modinfo//$'\r'/'%0D'}"
-          echo "modinfo=$modinfo" >> "$GITHUB_ENV"
+          echo "::set-output name=modinfo::$modinfo"
       - name: Create tag
         run: |
           git config --global user.name "GitHub Actions Agent"
           git config --global user.email "<>"
-          git tag "v${{ fromJson($modinfo).version }}"
+          tagname="v${{ fromJson(steps.vars.outputs.modinfo).version }}"
+          git tag "$tagname"
           git push --no-verify --tags
+          echo "tag=$tagname" >> "$GITHUB_OUTPUT"
       - name: Install tools
         uses: asdf-vm/actions/install@v2
       - name: Bump modinfo version
@@ -41,4 +45,4 @@ jobs:
   release:
     uses: ./.github/workflows/release.yml
     with:
-      tag: ${{ fromJson($modinfo).version }}
+      tag: ${{ needs.build.outputs.tag }}
