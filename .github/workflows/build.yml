@@ -1,4 +1,4 @@
-name: Build and Release
+name: Build
 
 on:
   push:
@@ -26,10 +26,6 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions Agent"
           git config --global user.email "<>"
-          if git show-ref --tags --verify --quiet "refs/tags/v${{ fromJson(steps.vars.outputs.modinfo).version }}"; then
-            echo "Tag already exists"
-            exit 1
-          fi
           git tag "v${{ fromJson(steps.vars.outputs.modinfo).version }}"
           git push --no-verify --tags
       - name: Install tools
