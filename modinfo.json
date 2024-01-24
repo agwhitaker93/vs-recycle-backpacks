@@ -6,7 +6,7 @@
     "KoboldRanger"
   ],
   "description": "Recycle your old backpacks!",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "dependencies": {
     "game": "1.19.1"
   }
