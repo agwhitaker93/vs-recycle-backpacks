@@ -15,7 +15,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Set variables for the run
         id: vars
-        run: echo "::set-output name=version::${{ fromJson(`cat ./modinfo.json`).version }}"
+        run: |
+          modinfo=`cat ./modinfo.json`
+          echo "::set-output name=version::${{ fromJson($modinfo).version }}"
       - name: Bundle as zip
         run: zip -r recyclebackpacks.zip modinfo.json assets
       - name: Make release
