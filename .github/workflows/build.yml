@@ -24,13 +24,13 @@ jobs:
           echo "::set-output name=modinfo::$modinfo"
       - name: Create tag
         run: |
+          git config --global user.name "GitHub Actions Agent"
+          git config --global user.email "<>"
           if git show-ref --tags --verify --quiet "refs/tags/v${{ fromJson(steps.vars.outputs.modinfo).version }}"; then
             echo "Tag already exists"
             exit 1
           fi
-          git tag "v${{ fromJson(steps.vars.outputs.modinfo).version }}"
-          git config --global user.name "GitHub Actions Agent"
-          git config --global user.email "<>"
+          git tag -a "v${{ fromJson(steps.vars.outputs.modinfo).version }}"
           git push --no-verify --tags
           echo "Update the version number of the modinfo here"
           git commit -am "Bump version [skip ci]"
