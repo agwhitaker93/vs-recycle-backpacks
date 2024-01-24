@@ -39,6 +39,6 @@ jobs:
           git commit -am "Bump version [skip ci]"
           git push --no-verify
   release:
-    uses: ./.github/workflows/release.yml@main
+    uses: ./.github/workflows/release.yml
     with:
       tag: ${{ fromJson(steps.vars.outputs.modinfo).version }}
