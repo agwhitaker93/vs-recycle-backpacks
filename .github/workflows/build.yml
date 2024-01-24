@@ -21,11 +21,15 @@ jobs:
           modinfo="${modinfo//'%'/'%25'}"
           modinfo="${modinfo//$'\n'/'%0A'}"
           modinfo="${modinfo//$'\r'/'%0D'}"
-          echo "::set-output name=modinfo::$modinfo }}"
-      - name: Bundle as zip
-        run: zip -r recyclebackpacks.zip modinfo.json assets
-      - name: Make release
-        uses: softprops/action-gh-release@v1
-        with:
-          name: ${{ fromJson(steps.vars.outputs.modinfo).version }}
-          files: recyclebackpacks.zip
+          echo "::set-output name=modinfo::$modinfo"
+      - name: Create tag
+        run: |
+          if git show-ref --tags --verify --quiet "refs/tags/v${{ fromJson(steps.vars.outputs.modinfo).version }}"; then
+            echo "Tag already exists"
+            exit 1
+          fi
+          git tag "v${{ fromJson(steps.vars.outputs.modinfo).version }}
+          git push --no-verify --tags
+          echo "Update the version number of the modinfo here"
+          git commit -am "Bump version [skip ci]"
+          git push --no-verify

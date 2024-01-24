@@ -1,0 +1,21 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Bundle as zip
+        run: zip -r recyclebackpacks.zip modinfo.json assets
+      - name: Make release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: recyclebackpacks.zip
