@@ -19,10 +19,10 @@ jobs:
         id: tag
         run: |
           if ${{ startsWith(github.ref, 'refs/tags/') }}; then
-            echo "Workflow running against a tag: '${{ github.ref }}'"
-            echo "::set-output name=tag::${{ github.ref }}"
+            # https://unix.stackexchange.com/a/325492
+            ref="${{ github.ref }}"
+            echo "::set-output name=tag::${ref##*/}"
           else
-            echo "Workflow not running against a tag: '${{github.ref}}', attempting to use input tag: '${{ inputs.tag }}'"
             echo "::set-output name=tag::${{ inputs.tag }}"
           fi
       - name: Checkout repository
@@ -34,4 +34,5 @@ jobs:
       - name: Make release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ steps.tag.outputs.tag }}
           files: recyclebackpacks.zip
