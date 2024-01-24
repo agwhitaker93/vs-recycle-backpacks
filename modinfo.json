@@ -1,11 +1,13 @@
 {
-    "type": "content",
-    "modid": "recyclebackpacks",
-    "name": "Recycle Backpacks",
-    "authors": ["KoboldRanger"],
-    "description" : "Recycle your old backpacks!",
-    "version": "1.0.0",
-    "dependencies": {
-        "game": "1.19.1"
-    }
+  "type": "content",
+  "modid": "recyclebackpacks",
+  "name": "Recycle Backpacks",
+  "authors": [
+    "KoboldRanger"
+  ],
+  "description": "Recycle your old backpacks!",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": "1.19.1"
+  }
 }

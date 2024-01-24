@@ -1,4 +1,4 @@
-name: Build
+name: Build and Release
 
 on:
   push:
@@ -32,3 +32,13 @@ jobs:
           fi
           git tag "v${{ fromJson(steps.vars.outputs.modinfo).version }}"
           git push --no-verify --tags
+      - name: Install tools
+        uses: asdf-vm/actions/install@v2
+      - name: Bump modinfo version
+        run: node scripts/bump-version.js
+      - name: Push version bump
+        run: |
+          git config --global user.name "GitHub Actions Agent"
+          git config --global user.email "<>"
+          git commit -am "Bump version [skip ci]"
+          git push --no-verify
