@@ -19,7 +19,7 @@ jobs:
         id: vars
         run: |
           modinfo=$(cat ./modinfo.json)
-          echo "modinfo=$modinfo" >> $GITHUB_ENV
+          echo "modinfo=$modinfo" >> $GITHUB_OUTPUT
       - name: Create tag
         run: |
           git config --global user.name "GitHub Actions Agent"
