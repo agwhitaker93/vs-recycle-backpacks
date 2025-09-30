@@ -11,7 +11,7 @@ jobs:
     permissions:
       contents: write
     outputs:
-      tag: "${{ steps.version-number.outputs.result }}"
+      tag: "v${{ steps.version-number.outputs.result }}"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
