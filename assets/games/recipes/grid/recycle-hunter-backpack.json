@@ -17,8 +17,8 @@
         },
         "output": {
             "type": "item",
-            "code": "game:hide-pelt-medium",
-            "quantity": 1
+            "code": "game:hide-pelt-small",
+            "quantity": 2
         }
     },
     {

@@ -12,13 +12,13 @@
             },
             "S": {
                 "type": "item",
-                "code": "game:backpack"
+                "code": "game:hoovedwearables-lowerbackside-saddlebags2"
             }
         },
         "output": {
             "type": "item",
-            "code": "game:leather-plain",
-            "quantity": 5
+            "code": "game:leather-sturdy-plain",
+            "quantity": 14
         }
     }
 ]
