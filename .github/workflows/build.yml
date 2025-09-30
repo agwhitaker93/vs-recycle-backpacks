@@ -15,18 +15,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-      - name: Set variables for the run
-        run: |
-          # https://stackoverflow.com/a/71758159
-          modinfo=$(cat ./modinfo.json)
-          echo "MODINFO<<EOF" >> $GITHUB_ENV
-          cat ./modinfo.json >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+      - name: Get version number
+        id: version-number
+        uses: actions/github-script@8
+        with:
+          script: |
+            const fs = require("fs")
+            const modinfo = JSON.parse(fs.readFileSync("./modinfo.json"))
+            return modinfo.version
       - name: Create tag
         run: |
           git config --global user.name "GitHub Actions Agent"
           git config --global user.email "<>"
-          tagname="v${{ fromJson(env.MODINFO).version }}"
+          tagname="v${{ steps.version-number.outputs.result }}"
           git tag "$tagname"
           git push --no-verify --tags
           echo "tag=$tagname" >> $GITHUB_OUTPUT
