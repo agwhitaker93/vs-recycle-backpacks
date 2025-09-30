@@ -26,13 +26,13 @@ jobs:
             echo "::set-output name=tag::${{ inputs.tag }}"
           fi
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: '${{ steps.tag.outputs.tag }}'
       - name: Bundle as zip
         run: zip -r recyclebackpacks.zip modinfo.json assets
       - name: Make release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.tag.outputs.tag }}
           files: recyclebackpacks.zip
