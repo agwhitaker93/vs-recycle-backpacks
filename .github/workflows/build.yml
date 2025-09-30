@@ -18,12 +18,8 @@ jobs:
       - name: Set variables for the run
         id: vars
         run: |
-          # https://stackoverflow.com/a/61919791
-          modinfo=`cat ./modinfo.json`
-          modinfo="${modinfo//'%'/'%25'}"
-          modinfo="${modinfo//$'\n'/'%0A'}"
-          modinfo="${modinfo//$'\r'/'%0D'}"
-          echo "modinfo=${modinfo}" >> $GITHUB_OUTPUT
+          modinfo=$(cat ./modinfo.json)
+          echo "modinfo=$modinfo" >> $GITHUB_ENV
       - name: Create tag
         run: |
           git config --global user.name "GitHub Actions Agent"
@@ -31,7 +27,7 @@ jobs:
           tagname="v${{ fromJson(steps.vars.outputs.modinfo).version }}"
           git tag "$tagname"
           git push --no-verify --tags
-          echo "tag=$tagname" >> "$GITHUB_OUTPUT"
+          echo "tag=$tagname" >> $GITHUB_OUTPUT
       - name: Install tools
         uses: asdf-vm/actions/install@v4
       - name: Bump modinfo version
