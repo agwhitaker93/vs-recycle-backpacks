@@ -19,7 +19,7 @@ jobs:
         run: |
           # https://stackoverflow.com/a/71758159
           modinfo=$(cat ./modinfo.json)
-          echo "MODINFO=<<EOF" >> $GITHUB_ENV
+          echo "MODINFO<<EOF" >> $GITHUB_ENV
           cat ./modinfo.json >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
       - name: Create tag
