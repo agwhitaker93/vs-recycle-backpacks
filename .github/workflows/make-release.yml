@@ -1,9 +1,7 @@
-name: Build
+name: Make Release
 
 on:
-  push:
-    branches:
-      - main
+  workfow_dispatch:
 
 jobs:
   build:
