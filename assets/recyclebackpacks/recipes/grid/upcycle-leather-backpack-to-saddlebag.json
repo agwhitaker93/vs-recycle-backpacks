@@ -1,0 +1,52 @@
+[
+  {
+    "ingredientPattern": "BNB,LLL,_N_",
+    "width": 3,
+    "height": 3,
+    "ingredients": {
+      "B": {
+        "type": "item",
+        "code": "game:backpack-normal"
+      },
+      "N": {
+        "type": "item",
+        "code": "game:metalnailsandstrips-{metal}",
+        "stacksize": 2
+      },
+      "L": {
+        "type": "item",
+        "code": "game:leather-normal-plain",
+        "stacksize": 5
+      }
+    },
+    "output": {
+      "type": "item",
+      "code": "game:hoovedwearables-lowerbackside-saddlebags1"
+    }
+  },
+  {
+    "ingredientPattern": "BNB,LLL,_N_",
+    "width": 3,
+    "height": 3,
+    "ingredients": {
+      "B": {
+        "type": "item",
+        "code": "game:backpack-sturdy"
+      },
+      "N": {
+        "type": "item",
+        "code": "game:metalnailsandstrips-{metal}",
+        "stacksize": 2
+      },
+      "L": {
+        "type": "item",
+        "code": "game:leather-sturdy-plain",
+        "stacksize": 5
+      }
+    },
+    "output": {
+      "type": "item",
+      "code": "game:hoovedwearables-lowerbackside-saddlebags2"
+    }
+  }
+]
