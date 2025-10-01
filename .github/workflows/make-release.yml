@@ -1,7 +1,7 @@
 name: Make Release
 
 on:
-  workfow_dispatch:
+  workflow_dispatch:
 
 jobs:
   build:
