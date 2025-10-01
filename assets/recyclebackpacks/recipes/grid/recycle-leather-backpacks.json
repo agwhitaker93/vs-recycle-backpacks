@@ -13,12 +13,13 @@
             },
             "S": {
                 "type": "item",
-                "code": "game:backpack-normal"
+                "code": "game:backpack-*",
+                "name": "quality"
             }
         },
         "output": {
             "type": "item",
-            "code": "game:leather-normal-plain",
+            "code": "game:leather-{quality}-plain",
             "quantity": 5
         }
     }
